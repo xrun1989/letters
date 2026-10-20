@@ -1,9 +1,13 @@
+
 name: Android APK
 
 on:
   push:
-    branches: [ "main", "master" ]
-    tags: [ "v*" ]
+    branches:
+      - main
+      - master
+    tags:
+      - "v*"
   pull_request:
   workflow_dispatch:
 
@@ -26,7 +30,7 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '8.9'
+          gradle-version: "8.9"
 
       - name: Build debug APK
         run: gradle assembleDebug
@@ -35,4 +39,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: grammar-studio-v0.1-debug-apk
-          path: app/build/outputs/apk/debug/app-debug.     path: app"uputs/  udio-eu       p  s-.    -' "
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
